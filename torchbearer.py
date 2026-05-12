@@ -2,8 +2,8 @@
 CS 460 – Algorithms: Final Programming Assignment
 The Torchbearer
 
-Student Name: ___________________________
-Student ID:   ___________________________
+Student Name: Luis Villalon
+Student ID: 820437274
 
 INSTRUCTIONS
 ------------
@@ -34,7 +34,10 @@ def explain_problem():
 
     TODO
     """
-    return "TODO"
+    q1 = "A single run only takes into account the cheapest path to individual chambers (nodes), it fails to consider the fuel needed to reach all the relic chambers."
+    q2 = "The algorithm must decide in which order it will visit all the relic chambers that result in a the minimum cumulative torch fuel cost from start to finish."
+    q3 = "Due to the total fuel costs depending on the order nodes are visited, the algorithm must search through all possible orders of visited nodes to find the global minimum fuel cost route."
+    ans = q1 + " " + q2 + " " + q3
 
 
 # =============================================================================
