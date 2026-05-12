@@ -147,7 +147,14 @@ def dijkstra_invariant_check():
 
     TODO
     """
-    return "TODO"
+    qa1 = "The shortest-path distance from the source to the current node is finalized and it will not change."
+    qa2="The distance is the shortest discovered path so far but may improve as more nodes are explored."
+    qb1="The source node has a distance of 0, and no paths have been discovered yet therefore all node have infinite distance."
+    qb2="The node with the smallest distance is selected, and since all edge weights are nonnegative, no paths in the future can produce a shorter distance."
+    qb3="All nodes have their shortest-path distances from the source computed correctly."
+    qc1="Calculating the shortest-path distances correctly ensures that our route planner can correctly evaluate different orders of visitation and decide which path results in the minimum fuel cost route that visits all relics."
+    ans = qa1 + " " + qa2 + " " + qb1 + " " + qb2 + " " + qb3 + " " + qc1
+    return ans
 
 
 # =============================================================================
