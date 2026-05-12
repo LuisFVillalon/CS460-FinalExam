@@ -11,9 +11,9 @@ I will read the ASSIGNMENT.md file to understand the problem and the requirement
 
 ---
 
-## Entry 2 – [Date]: [Short description]
+## Entry 2 – [04/12/2026]: [Short description]
 
-_Your entry here._
+I plan on wokring in the torchbearer.py file by implementing the necessary code. I plan on implementing the conceptual answers used in the README.md file to guide me in the code design for Dijkstra' algorithm, such as using a nested didctionary to store the path's distances. I also plan on finishing the questions in the README.md file if possible before moving on into parts 5 and 6 in the torchbearer.py file. 
 
 
 ---
