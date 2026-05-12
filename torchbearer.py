@@ -65,7 +65,6 @@ def select_sources(spawn, relics, exit_node):
             unique_nodes.append(node)
     return unique_nodes
 
-
 def run_dijkstra(graph, source):
     """
     Parameters
@@ -82,8 +81,26 @@ def run_dijkstra(graph, source):
 
     TODO
     """
-    pass
+    dist = {}
 
+    # initiliaze all distances to infinity
+    for node in graph:
+        dist[node] = float('inf')
+
+    # distance to source is zero
+    dist[source] = 0
+
+    # min-heap: (distance, node), lowest values priority queue
+    heap = [(0, source)]
+
+    while heap:
+        curr_dist, curr_node = heapq.heappop(heap)
+        # skip paths that cost more fuel than the path that is currently stored
+        if curr_dist > dist[curr_node]:
+            continue
+        # NEED TO TRAVERSE NEIGHBOR NODES
+
+    return dist
 
 def precompute_distances(graph, spawn, relics, exit_node):
     """
