@@ -98,7 +98,14 @@ def run_dijkstra(graph, source):
         # skip paths that cost more fuel than the path that is currently stored
         if curr_dist > dist[curr_node]:
             continue
-        # NEED TO TRAVERSE NEIGHBOR NODES
+        # traverse the neighbor nodes
+        for neighbor, cost in graph.get(curr_node, []):
+            if neighbor not in dist:
+                dist[neighbor] = float('inf')
+            new_dist = curr_dist + cost
+            if new_dist < dist[neighbor]:
+                dist[neighbor] = new_dist
+                heapq.heappush(heap, (new_dist, neighbor))
 
     return dist
 
@@ -119,7 +126,11 @@ def precompute_distances(graph, spawn, relics, exit_node):
 
     TODO
     """
-    pass
+    dist_table = {}
+    sources = select_sources(spawn, relics, exit_node)
+    for source in sources:
+        dist_table[source] = run_dijkstra(graph, source)
+    return dist_table
 
 
 # =============================================================================
