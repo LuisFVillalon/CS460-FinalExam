@@ -248,9 +248,21 @@ def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
     explaining why it is safe (cannot skip the optimal solution).
     This comment is graded.
     """
-    # Pruning step: lower bound? 
-    # Base case: when all relics have been visited 
-    # Recursive step: visit the remaining relics
+    # Pruning
+    if cost_so_far >= best[0]:
+        return
+    # Base case
+    if not relics_remaining:
+        exit_cost = dist_table[current_loc].get(exit_node, float('inf'))
+        total_cost = cost_so_far + exit_cost
+
+        if total_cost < best[0]:
+            best[0] = total_cost
+            best[1] = relics_visited_order.copy()
+
+        return
+    # Recursive case
+
 
 
 # =============================================================================
