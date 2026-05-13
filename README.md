@@ -21,7 +21,7 @@
 
 - **Why this requires a search over orders (one sentence):**
   Due to the total fuel costs depending on the order of relic nodes visited, the algorithm must search through all possible orders of visited nodes to find the global minimum fuel cost route. 
-  
+
 ---
 
 ## Part 2: Precomputation Design
@@ -83,20 +83,15 @@ Calculating the shortest-path distances correctly ensures that our route planner
 
 ### Why Greedy Fails
 
-> State the failure mode. Then give a concrete counter-example using specific node names
-> or costs (you may use the illustration example from the spec). Three to five bullets.
-
-- **The failure mode:** _Your answer here._
-- **Counter-example setup:** _Your answer here._
-- **What greedy picks:** _Your answer here._
-- **What optimal picks:** _Your answer here._
-- **Why greedy loses:** _Your answer here._
+- **The failure mode:** A greedy approach will make its next decision based on local optimality when deciding to move to the next nearest relic, which can result in a suboptimal total fuel cost path.
+- **Counter-example setup:** Suppose S→A = 1, S→B = 2, A→B = 4, B→A = 1, A→T = 1, and B→T = 3. Where A and B are relics that must both be visited. 
+- **What greedy picks:** Greedy starts at S and chooses A first (cost 1), then goes A → B (cost 4), then B → T (cost 3) for a total cost of 1 + 4 + 3 = 8.
+- **What optimal picks:** The optimal route is S → B → A → T, with a total cost of 2 + 1 + 1 = 4.
+- **Why greedy loses:** A greedy approach will pick to visit node A first because it has a shorter distance locally, this leads to a more expensive finalized route, meanwhile starting with node B results in a total lower cost path.
 
 ### What the Algorithm Must Explore
 
-> One bullet. Must use the word "order."
-
-- _Your answer here._
+- The algorithm must evaluate all possible orders of visiting the relic nodes to ensure the global minimum-cost route is chosen.
 
 ---
 
