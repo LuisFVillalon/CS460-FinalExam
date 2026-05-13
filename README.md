@@ -4,11 +4,6 @@
 **Student ID:** 820437274
 **Course:** CS 460 – Algorithms | Spring 2026
 
-> This README is your project documentation. Write it the way a developer would document
-> their design decisions , bullet points, brief justifications, and concrete examples where
-> required. You are not writing an essay. You are explaining what you built and why you built
-> it that way. Delete all blockquotes like this one before submitting.
-
 ---
 
 ## Part 1: Problem Analysis
@@ -99,33 +94,27 @@ Calculating the shortest-path distances correctly ensures that our route planner
 
 ### Part 5a: State Representation
 
-> Document the three components of your search state as a table.
-> Variable names here must match exactly what you use in torchbearer.py.
 
 | Component | Variable name in code | Data type | Description |
 |---|---|---|---|
-| Current location | | | |
-| Relics already collected | | | |
-| Fuel cost so far | | | |
+| Current location | current_loc | node | The node the algorithm is currently on in the search. |
+| Relics already collected | relics_visited_order | list[node] | The list of the visited relics in specific orders so far.|
+| Fuel cost so far | cost_so_far | float | The total fuel cost generated in the current path. |
 
 ### Part 5b: Data Structure for Visited Relics
 
-> Fill in the table.
-
 | Property | Your answer |
 |---|---|
-| Data structure chosen | |
-| Operation: check if relic already collected | Time complexity: |
-| Operation: mark a relic as collected | Time complexity: |
-| Operation: unmark a relic (backtrack) | Time complexity: |
-| Why this structure fits | |
+| Data structure chosen | Set |
+| Operation: check if relic already collected | Time complexity: O(1) |
+| Operation: mark a relic as collected | Time complexity: O(1) |
+| Operation: unmark a relic (backtrack) | Time complexity: O(1) |
+| Why this structure fits | A set allows for constant-time membership checks, removals, and additions during a recursive backtracking. |
 
 ### Part 5c: Worst-Case Search Space
 
-> Two bullets.
-
-- **Worst-case number of orders considered:** _Your answer (in terms of k)._
-- **Why:** _One-line justification._
+- **Worst-case number of orders considered:** k!
+- **Why:** With k relics, the algorithm may need to evaluate every possible order of visitation.
 
 ---
 
@@ -133,30 +122,23 @@ Calculating the shortest-path distances correctly ensures that our route planner
 
 ### Part 6a: Best-So-Far Tracking
 
-> Three bullets.
-
-- **What is tracked:** _Your answer here._
-- **When it is used:** _Your answer here._
-- **What it allows the algorithm to skip:** _Your answer here._
+- **What is tracked:** The minimum total fuel cost of a complete route found so far.
+- **When it is used:** During the search, before exploring further from the current state, the current cost is compared to our current minimum cost.
+- **What it allows the algorithm to skip:** It allows the algorithm to skip exploring any paths whose current cost is greater than our current minimum cost. 
 
 ### Part 6b: Lower Bound Estimation
 
-> Three bullets.
-
-- **What information is available at the current state:** _Your answer here._
-- **What the lower bound accounts for:** _Your answer here._
-- **Why it never overestimates:** _Your answer here._
+- **What information is available at the current state:** The current location, the set of remaining relics, the current fuel cost, and the current best total cost of a complete route. 
+- **What the lower bound accounts for:** The current fuel cost (cost_so_far) is used as the lower bound on the total cost of exploring the current partial route.
+- **Why it never overestimates:** Due to the all edge weights being nonnegative, any additional steps can only increase or maintain the cost, therefore the final total cost of the route will always be greater than or equal to our current fuel cost, cost_so_far.
 
 ### Part 6c: Pruning Correctness
 
-> One to two bullets. Explain why pruning is safe.
-
-- _Your answer here._
+- Pruning is safe because it only removes a branch that is guaranteed not to be an optimal solution when our current fuel cost is greater than or equal to our current best total cost of a complete route. (cost_so_far >= best_so_far)
+- The optimal solution is never discarded because all future steps costs are nonnegative, therefore a partial route cannot become cheaper than the best completed route found. 
 
 ---
 
 ## References
 
-> Bullet list. If none beyond lecture notes, write that.
-
-- _Your references here._
+- None beyond lecture notes
