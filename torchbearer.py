@@ -248,7 +248,9 @@ def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
     explaining why it is safe (cannot skip the optimal solution).
     This comment is graded.
     """
-    pass
+    # Pruning step: lower bound? 
+    # Base case: when all relics have been visited 
+    # Recursive step: visit the remaining relics
 
 
 # =============================================================================
