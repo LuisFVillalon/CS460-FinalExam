@@ -18,9 +18,9 @@ When implementing Dijkstra's algorithm it was returning an incorrect distance fo
 
 ---
 
-## Entry 3 – [05/13/2026]: Part 4 - 6 
+## Entry 3 – [05/13/2026]: Part 4-6: Pruning, Recursion, Backtrack
 
-_Your entry here._
+When implementing the _explore function I ran into an issue where the function was returning incorrect values for the relic orders and total costs. I found the problem was being caused because the state was not being properly restored because I was not taking into account backtracking. I was not re-adding relics into the relics_remaining set after each recursive call. I was able to fix this by removing the relic form the current path and adding it back to relics_remaining after each recursive call.
 
 ---
 
