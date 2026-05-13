@@ -248,10 +248,13 @@ def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
     explaining why it is safe (cannot skip the optimal solution).
     This comment is graded.
     """
-    # Pruning
+    # Pruning: If the partial route costs is equal or greater than the best 
+    # complete route then it cannot become optimal, therefore we skip it. 
+    # This is safe because all edge wights are nonnegative, so any further 
+    # exploration of the current path can only increase the final total cost.
     if cost_so_far >= best[0]:
         return
-    # Base case
+    # Base case: all relics have been visited
     if not relics_remaining:
         exit_cost = dist_table[current_loc].get(exit_node, float('inf'))
         total_cost = cost_so_far + exit_cost
@@ -261,10 +264,11 @@ def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
             best[1] = relics_visited_order.copy()
 
         return
-    # Recursive case
+    # Recursive case: try each remaining relic next
     for relic in list(relics_remaining):
         travel_cost = dist_table[current_loc].get(relic, float('inf'))
 
+        # skip paths where the next relic are unreachable
         if travel_cost == float('inf'):
             continue
 
@@ -280,7 +284,10 @@ def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
             exit_node,
             best
         )
-
+        
+        # backtrack
+        relics_visited_order.pop()
+        relics_remaining.add(relic)
 
 # =============================================================================
 # PIPELINE
@@ -303,8 +310,8 @@ def solve(graph, spawn, relics, exit_node):
 
     TODO
     """
-    pass
-
+    dist_table = precompute_distances(graph, spawn, relics, exit_node)
+    return find_optimal_route(dist_table, spawn, relics, exit_node)
 
 # =============================================================================
 # PROVIDED TESTS (do not modify)
