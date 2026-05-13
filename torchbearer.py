@@ -171,7 +171,14 @@ def explain_search():
 
     TODO
     """
-    return "TODO"
+    q1="A greedy approach will make its next decision based on local optimality when deciding to move to the next nearest relic, which can result in a suboptimal total fuel cost path."
+    q2="Suppose S→A = 1, S→B = 2, A→B = 4, B→A = 1, A→T = 1, and B→T = 3. Where A and B are relics that must both be visited."
+    q3="Greedy starts at S and chooses A first (cost 1), then goes A → B (cost 4), then B → T (cost 3) for a total cost of 1 + 4 + 3 = 8."
+    q4="The optimal route is S → B → A → T, with a total cost of 2 + 1 + 1 = 4."
+    q5="A greedy approach will pick to visit node A first because it has a shorter distance locally, this leads to a more expensive finalized path, meanwhile starting with node B results in a total lower cost path."
+    q6="The algorithm must evaluate all possible orders of visiting the relic nodes to ensure the global minimum-cost path is chosen."
+    ans = q1 + " " + q2 + " " + q3 + " " + q4 + " " + q5 + " " + q6
+    return ans
 
 
 # =============================================================================
