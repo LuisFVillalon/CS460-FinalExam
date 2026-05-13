@@ -205,8 +205,19 @@ def find_optimal_route(dist_table, spawn, relics, exit_node):
 
     TODO
     """
-    pass
+    # track which relics still need to be visited
+    relics_remaining = set(relics)
+    # tracks the order of relics chosen so far
+    relics_visited_order = []
+    # no fuel spent yet at spawn
+    cost_so_far = 0
+    # stores the best complete route found so far
+    # best[0] = minimum fuel cost, best[1] = best relic order
+    best = [float('inf'), []]
 
+    _explore(dist_table, spawn, relics_remaining, relics_visited_order, cost_so_far, exit_node, best)
+
+    return best[0], best[1]
 
 def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
              cost_so_far, exit_node, best):
