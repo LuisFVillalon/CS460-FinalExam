@@ -262,7 +262,24 @@ def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
 
         return
     # Recursive case
+    for relic in list(relics_remaining):
+        travel_cost = dist_table[current_loc].get(relic, float('inf'))
 
+        if travel_cost == float('inf'):
+            continue
+
+        relics_remaining.remove(relic)
+        relics_visited_order.append(relic)
+
+        _explore(
+            dist_table,
+            relic,
+            relics_remaining,
+            relics_visited_order,
+            cost_so_far + travel_cost,
+            exit_node,
+            best
+        )
 
 
 # =============================================================================
