@@ -38,6 +38,7 @@ def explain_problem():
     q2 = "The algorithm must decide in which order it will visit all the relic chambers that result in a the minimum cumulative torch fuel cost from start to finish."
     q3 = "Due to the total fuel costs depending on the order nodes are visited, the algorithm must search through all possible orders of visited nodes to find the global minimum fuel cost route."
     ans = q1 + " " + q2 + " " + q3
+    return ans
 
 
 # =============================================================================
