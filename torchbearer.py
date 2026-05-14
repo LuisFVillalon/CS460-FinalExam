@@ -35,7 +35,7 @@ def explain_problem():
     TODO
     """
     q1 = "A single run only takes into account the cheapest path to individual chambers (nodes), it fails to consider the fuel needed to reach all the relic chambers."
-    q2 = "The algorithm must decide in which order it will visit all the relic chambers that result in a the minimum cumulative torch fuel cost from start to finish."
+    q2 = "The algorithm must decide in which order it will visit all the relic chambers that result in the minimum cumulative torch fuel cost from start to finish."
     q3 = "Due to the total fuel costs depending on the order nodes are visited, the algorithm must search through all possible orders of visited nodes to find the global minimum fuel cost route."
     ans = q1 + " " + q2 + " " + q3
     return ans
@@ -84,7 +84,7 @@ def run_dijkstra(graph, source):
     """
     dist = {}
 
-    # initiliaze all distances to infinity
+    # initialize all distances to infinity
     for node in graph:
         dist[node] = float('inf')
 
@@ -150,7 +150,7 @@ def dijkstra_invariant_check():
     """
     qa1 = "The shortest-path distance from the source to the current node is finalized and it will not change."
     qa2="The distance is the shortest discovered path so far but may improve as more nodes are explored."
-    qb1="The source node has a distance of 0, and no paths have been discovered yet therefore all node have infinite distance."
+    qb1="The source node has a distance of 0, and no paths have been discovered yet therefore all nodes have infinite distance."
     qb2="The node with the smallest distance is selected, and since all edge weights are nonnegative, no paths in the future can produce a shorter distance."
     qb3="All nodes have their shortest-path distances from the source computed correctly."
     qc1="Calculating the shortest-path distances correctly ensures that our route planner can correctly evaluate different orders of visitation and decide which path results in the minimum fuel cost route that visits all relics."
@@ -251,7 +251,7 @@ def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
     """
     # Pruning: If the partial route costs is equal or greater than the best 
     # complete route then it cannot become optimal, therefore we skip it. 
-    # This is safe because all edge wights are nonnegative, so any further 
+    # This is safe because all edge weights are nonnegative, so any further 
     # exploration of the current path can only increase the final total cost.
     if cost_so_far >= best[0]:
         return
@@ -285,7 +285,7 @@ def _explore(dist_table, current_loc, relics_remaining, relics_visited_order,
             exit_node,
             best
         )
-        
+
         # backtrack
         relics_visited_order.pop()
         relics_remaining.add(relic)

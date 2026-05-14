@@ -13,7 +13,7 @@ I will read the ASSIGNMENT.md file to understand the problem and the requirement
 
 ## Entry 2 – [05/12/2026]: Implementing Dijkstra's algorithm
 
-When implementing Dijkstra's algorithm it was returning an incorrect distance for some paths. This would result in my distance table holding wrong values which then led to the route optimization step to return incorrect values. The issue was that I was not handling outdated entries in the prioroity queue. I was able to fix this by implementing a conditional statement (if curr_dist > dist[curr_node] ==> continue) that allows the algorithm to skip outdated entries and only expand the shortest known path.
+When implementing Dijkstra's algorithm it was returning an incorrect distance for some paths. This would result in my distance table holding wrong values which then led to the route optimization step to return incorrect values. The issue was that I was not handling outdated entries in the priority queue. I was able to fix this by implementing a conditional statement (if curr_dist > dist[curr_node] ==> continue) that allows the algorithm to skip outdated entries and only expand the shortest known path.
 
 
 ---
@@ -26,25 +26,20 @@ When implementing the _explore function I ran into an issue where the function w
 
 ## Entry 4 – [05/14/2026]: Post-Implementation Reflection
 
-> Required. Written after your implementation is complete. Describe what you would
-> change or improve given more time.
-
-_Your entry here._
+One improvement I would make if given more time is enhancing the search process further by implementing a stricter lower-bound hueristic to prune paths more efficiently and reduce unnecessary path explorations. I would also implement more extensive unit testing to cover more edge cases, such as larger graphs and unreachable nodes, to ensure the algorithm remains robust. Last minute checks.
 
 ---
 
 ## Final Entry – [05/14/2026]: Time Estimate
 
-> Required. Estimate minutes spent per part. Honesty is expected; accuracy is not graded.
-
 | Part | Estimated Hours |
 |---|---|
-| Part 1: Problem Analysis | |
-| Part 2: Precomputation Design | |
-| Part 3: Algorithm Correctness | |
-| Part 4: Search Design | |
-| Part 5: State and Search Space | |
-| Part 6: Pruning | |
-| Part 7: Implementation | |
-| README and DEVLOG writing | |
-| **Total** | |
+| Part 1: Problem Analysis | 2 |
+| Part 2: Precomputation Design | 2 |
+| Part 3: Algorithm Correctness | 2 |
+| Part 4: Search Design | 1.5 |
+| Part 5: State and Search Space | 1.5 |
+| Part 6: Pruning | 0.5 |
+| Part 7: Implementation | 3 |
+| README and DEVLOG writing | 3 |
+| **Total** | 15.5 |

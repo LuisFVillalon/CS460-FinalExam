@@ -9,8 +9,7 @@
 ## Part 1: Problem Analysis
 
 - **Why a single shortest-path run from S is not enough:**
-  A single run only takes into account the cheapest path to individual chambers (nodes), it fails to consider the fuel needed to reach all the relic chambers. 
-
+  A single run only takes into account the cheapest path to individual chambers (nodes), it fails to consider which order to visit the relic chamber nodes.
 - **What decision remains after all inter-location costs are known:**
   The algorithm must decide in which order it will visit all the relic chambers that result in the minimum cumulative torch fuel cost from start to finish. 
 
@@ -52,10 +51,10 @@
 ### Part 3a: What the Invariant Means
 
 - **For nodes already finalized (in S):**
-  The shortest-path distance from the source to the current node is finalized and it will not change.
+  The shortest-path distance from the source to v node, held in in dist[v], can no longer be improved by future relaxation.
 
 - **For nodes not yet finalized (not in S):**
-  The distance is the shortest discovered path so far but may improve as more nodes are explored.
+  The distance is the shortest discovered path so far, held in dist[u], from source to u node, only traverses finalized nodes, but may improve as more nodes are finanlized and new paths discovered.
 
 ### Part 3b: Why Each Phase Holds
 
@@ -94,11 +93,10 @@ Calculating the shortest-path distances correctly ensures that our route planner
 
 ### Part 5a: State Representation
 
-
 | Component | Variable name in code | Data type | Description |
 |---|---|---|---|
 | Current location | current_loc | node | The node the algorithm is currently on in the search. |
-| Relics already collected | relics_visited_order | list[node] | The list of the visited relics in specific orders so far.|
+| Relics already collected | relics_remaining | set[node] | A set of relic nodes not yet visited, a relic node is considered collected once removed from this set.|
 | Fuel cost so far | cost_so_far | float | The total fuel cost generated in the current path. |
 
 ### Part 5b: Data Structure for Visited Relics
@@ -141,4 +139,4 @@ Calculating the shortest-path distances correctly ensures that our route planner
 
 ## References
 
-- None beyond lecture notes
+- Lecture notes only.
