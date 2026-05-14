@@ -26,7 +26,7 @@ When implementing the _explore function I ran into an issue where the function w
 
 ## Entry 4 – [05/14/2026]: Post-Implementation Reflection
 
-One improvement I would make if given more time is enhancing the search process further by implementing a stricter lower-bound hueristic to prune paths more efficiently and reduce unnecessary path explorations. I would also implement more extensive unit testing to cover more edge cases, such as larger graphs and unreachable nodes, to ensure the algorithm remains robust. Last minute checks.
+One improvement I would make if given more time is enhancing the search process further by implementing a stricter lower-bound hueristic to prune paths more efficiently and reduce unnecessary path explorations. I would also implement more extensive unit testing to cover more edge cases, such as larger graphs and unreachable nodes, to ensure the algorithm remains robust. Tested and re-checked responses before final submission.
 
 ---
 
